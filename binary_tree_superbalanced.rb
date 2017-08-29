@@ -51,11 +51,11 @@ end
 
 def superbalanced_bfs?(root)
   depths = []
-  node_stack = []
-  node_stack.push([root, 0])
+  node_queue = []
+  node_queue.push([root, 0])
 
-  until node_stack.empty?
-    node, depth = node_stack.shift
+  until node_queue.empty?
+    node, depth = node_queue.shift
 
     # if leaf
     if !node.left && !node.right
@@ -68,8 +68,8 @@ def superbalanced_bfs?(root)
       end
 
     else
-      node_stack.push([node.left, depth + 1]) if node.left
-      node_stack.push([node.right, depth + 1]) if node.right
+      node_queue.push([node.left, depth + 1]) if node.left
+      node_queue.push([node.right, depth + 1]) if node.right
     end
   end
 
