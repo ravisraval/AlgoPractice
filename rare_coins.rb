@@ -13,41 +13,19 @@
 # 1¢, 1¢, 2¢
 # 1¢, 3¢
 # 2¢, 2¢
-class Change
+def change_possibilities_bottom_up(amount, denominations)
+  ways_of_doing_n_cents = [0] * (amount + 1)
+  ways_of_doing_n_cents[0] = 1
 
-  def initialize
-    @memo = { }
+  denominations.each do |coin|
+      (coin..amount).each do |higher_amount|
+          higher_amount_remainder = higher_amount - coin
+          ways_of_doing_n_cents[higher_amount] += ways_of_doing_n_cents[higher_amount_remainder]
+      end
   end
 
-
-  def rare_coins(amount_left, coins, idx = 0)
-
-    memo_key = [amount_left, idx].to_s
-    if @memo.include?(memo_key)
-      return @memo[memo_key]
-    end
-
-    return 1 if amount_left == 0
-
-    return 0 if amount_left < 0
-
-    return 0 if idx == coins.length
-
-    current_coin = coins[idx]
-
-    num_possibilities = 0
-
-    while amount_left >= 0
-      num_possibilities += rare_coins(amount_left, coins, idx + 1)
-      amount_left -= current_coin
-    end
-
-    @memo[memo_key] = num_possibilities
-
-    num_possibilities
-
-  end
+  return ways_of_doing_n_cents[amount]
 end
 
 
-p rare_coins(4, [1,2,3])
+p change_possibilities_bottom_up(4, [1,2,3])
