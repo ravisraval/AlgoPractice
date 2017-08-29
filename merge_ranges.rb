@@ -14,7 +14,7 @@ def merge_ranges(arr)
     second = arr[idx + 1]
 
     if first[1] >= second[0] #if overlap
-      if first[1] > second[1]
+      if first[1] > second[1] #determine which meeting ends later
         arr[idx + 1] = first
       else
         arr[idx + 1] = [first[0], second[1]]
@@ -29,4 +29,4 @@ end
 
 
 
-p merge_ranges([[3, 5], [0, 1], [4, 8], [10, 12], [9, 10]])
+p merge_ranges([[1, 10], [2, 6], [3, 5], [7, 9]])
