@@ -1,8 +1,6 @@
 class TempTracker
 
   def initialize
-    @max = nil
-    @min = nil
     @store = Hash.new(0)
   end
 
