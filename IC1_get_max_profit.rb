@@ -1,15 +1,15 @@
 def get_max(arg)
   # write the body of your function here
   current_low = nil
-  current_max = nil
+  current_max_profit = nil
 
   arg.each_with_index do |price, idx|
     if current_low
-      if current_max.nil? || price - current_low > current_max
-        current_max = price - current_low
+      if current_max_profit.nil? || price - current_low > current_max_profit
+        current_max_profit = price - current_low
       end
     end
-
+    # first time through, set first thing to be current_low
     if current_low.nil? || price < current_low
       current_low = price
     end
