@@ -28,19 +28,51 @@
 # Weights and values may be any non-negative integer. Yes, it's weird to think about cakes that weigh nothing or duffel bags that can't hold anything. But we're not just super mastermind criminals—we're also meticulous about keeping our algorithms flexible and comprehensive.
 
 def max_duffel_bag_value(cake_arrays, capacity)
-  cake_arrays.sort_by! {|weight, value| value.fdiv(weight)}.reverse!
 
-  max_value = 0
-  cake_arrays.each do |cake_weight, cake_value|
-    times_current_cake_fits = capacity / cake_weight
-    max_value += cake_value * times_current_cake_fits
-    capacity -= cake_weight * times_current_cake_fits
+  cake_arrays.delete_if { |w, v| w == 0 && v == 0 }
+
+  return 'No cakes to steal' if cake_arrays.empty?
+
+  if cake_arrays.any? { |w, v| w == 0 }
+    puts %Q(There's a magical weightless cake that's worth something, so...#{Float::INFINITY})
+
+    exit
   end
-  max_value
 
+  best_capacities = [0] * (capacity + 1)
+
+  (0..capacity).each do |current_capacity|
+
+    best_value_current_cap = 0
+
+    cake_arrays.each do |cake_weight, cake_value|
+      if cake_weight <= current_capacity
+        remaining_capacity = current_capacity - cake_weight
+
+        if best_capacities[remaining_capacity] + cake_value >
+           best_value_current_cap
+
+           best_value_current_cap =
+           best_capacities[remaining_capacity] + cake_value
+         end
+
+       end
+
+     end
+
+     best_capacities[current_capacity] = best_value_current_cap
+   end
+
+  best_capacities.last
 end
 
 
 cake_arrays = [[7, 160], [3, 90], [2, 15]]
+cake_arrays2 = [[0, 5], [3, 90], [2, 15]]
 capacity = 20
+capacity2 = 9
+cake_arrays3 = [[3, 40], [5, 70]]
 p max_duffel_bag_value(cake_arrays, capacity)
+p max_duffel_bag_value(cake_arrays, 0)
+p max_duffel_bag_value(cake_arrays3, capacity2)
+p max_duffel_bag_value(cake_arrays2, capacity)
