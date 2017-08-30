@@ -21,4 +21,4 @@ def two_sum_present?(flight_length, movie_lengths)
 end
 
 puts "should be false : #{two_sum_present?(10, [3,4,5])}"
-puts "should be true : #{two_sum_present?(10, [3,4,5,6])}"
+puts "should be true : #{two_sum_present?(10, [5,5])}"
