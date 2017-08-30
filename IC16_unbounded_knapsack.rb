@@ -46,7 +46,9 @@ def max_duffel_bag_value(cake_arrays, capacity)
     best_value_current_cap = 0
 
     cake_arrays.each do |cake_weight, cake_value|
+      #only use cakes that are less than current_capacity
       if cake_weight <= current_capacity
+        #always just use one cake
         remaining_capacity = current_capacity - cake_weight
 
         if best_capacities[remaining_capacity] + cake_value >
