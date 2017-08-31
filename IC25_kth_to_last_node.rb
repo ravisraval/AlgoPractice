@@ -24,7 +24,6 @@ def kth_to_last_node(k, head_node)
     i += 1
   end
 
-
   until runner.next == nil
     current_node = current_node.next
     runner = runner.next
@@ -32,7 +31,6 @@ def kth_to_last_node(k, head_node)
   current_node
 
 end
-
 
 a = LinkedListNode.new("Angel Food")
 b = LinkedListNode.new("Bundt")
