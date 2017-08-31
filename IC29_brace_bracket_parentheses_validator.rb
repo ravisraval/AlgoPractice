@@ -1,3 +1,6 @@
+#To improve DRY, use a hash:
+# { '[' => ']'... etc}
+
 def good_stuff?(str)
   bracket_array = []
 
@@ -30,7 +33,6 @@ def good_stuff?(str)
         return false
       end
     end
-
 
     if ch == '[' || ch == '{' || ch == '('
       bracket_array.push(ch)
