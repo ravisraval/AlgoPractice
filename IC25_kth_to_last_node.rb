@@ -18,13 +18,14 @@ def kth_to_last_node(k, head_node)
   runner = head_node
 
   i = 0
-  while i < k
+  while i < k - 1
     runner = runner.next
+    raise "List has fewer than #{k} nodes" if runner == nil
     i += 1
   end
 
 
-  until runner == nil
+  until runner.next == nil
     current_node = current_node.next
     runner = runner.next
   end
@@ -44,5 +45,5 @@ b.next = c
 c.next = d
 d.next = e
 
-p kth_to_last_node(2, a)
+p kth_to_last_node(1, a)
 # returns the node with value "Devil's Food" (the 2nd to last node)
