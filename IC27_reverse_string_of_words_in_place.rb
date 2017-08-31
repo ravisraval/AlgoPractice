@@ -31,7 +31,7 @@ def reverse_string_in_place(str, start_idx, end_idx)
   end
   str
 end
-# require 'byebug'
+
 def reverse_words(str)
   str = reverse_string_in_place(str, 0, str.length - 1)
 
@@ -39,9 +39,13 @@ def reverse_words(str)
 
   i = 0
   while i <= str.length
-    # debugger
+
     if str[i] == ' ' || i == str.length
-      str[current_start_idx...i] = reverse_string_in_place(str, current_start_idx, i - 1)[current_start_idx...i]
+
+      str[current_start_idx...i] =
+      reverse_string_in_place(
+      str, current_start_idx, i - 1
+      )[current_start_idx...i]
 
       current_start_idx = i + 1
     end
