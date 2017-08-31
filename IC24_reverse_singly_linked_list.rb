@@ -27,7 +27,7 @@ def reverse_singly_linked_list(head)
     current_node.next = previous_node #remove a's next | b's next = a
 
     previous_node = current_node #previous_node = a | previous_node = b
-    current_node = next_node #current_node = b | current_node = c
+    current_node = next_node #current_node = b | current_node
   end
 
   current_node.next = previous_node #finish it off with e's next = d
