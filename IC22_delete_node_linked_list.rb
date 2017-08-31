@@ -35,5 +35,3 @@ b.next = c
 
 
 p delete_node_singly_linked_list(node_to_delete)
-
-p Object.main
