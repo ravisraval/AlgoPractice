@@ -41,7 +41,8 @@ def roman_to_int(numeral)
   res
 end
 
-p roman_to_int('CMXIV')
+p roman_to_int('DCCXVI')
+p roman_to_int('CDXCIV')
 
 def integer_to_roman(integer)
 
@@ -81,8 +82,6 @@ def integer_to_roman(integer)
   res = ''
 
   integer.to_s.reverse.chars.each_with_index do |digit, place|
-    # p digit.to_s * 10 ** place
-    # debugger
     next if digit == '0'
     res += numerals.key(digit.to_i * 10 ** place).reverse
   end
