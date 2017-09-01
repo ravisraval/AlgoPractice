@@ -82,7 +82,8 @@ def integer_to_roman(integer)
 
   integer.to_s.reverse.chars.each_with_index do |digit, place|
     # p digit.to_s * 10 ** place
-    next if digit == 0
+    # debugger
+    next if digit == '0'
     res += numerals.key(digit.to_i * 10 ** place).reverse
   end
   res.reverse
@@ -90,4 +91,4 @@ def integer_to_roman(integer)
 end
 
 p integer_to_roman(494)
-p integer_to_roman(51)
+p integer_to_roman(50)
