@@ -8,26 +8,36 @@ def egg_broke?(secret_highest_floor, attempted_floor)
   attempted_floor > secret_highest_floor
 end
 
+def drop_second(secret_highest_floor, attempted_floor)
+
+  while true
+
+    unless egg_broke?(secret_highest_floor, attempted_floor)
+      attempted_floor += 1
+    else
+      puts secret_highest_floor
+      return attempted_floor - 1
+    end
+
+  end
+
+end
+
 def egg_drop
   secret_highest_floor = rand(1..100)
+  current_floor = 14
   drops = 1
+  floor_jump = 9
 
-  current_floor = 3
-  # puts "secret floor: #{secret_highest_floor}"
   while true
 
     if egg_broke?(secret_highest_floor, current_floor)
       drops += 1
-      if egg_broke?(secret_highest_floor, current_floor - 1)
-        puts "drops: #{drops}"
-        return "highest_floor #{current_floor - 2}"
-      else
-        puts "drops: #{drops}"
-        return "highest_floor: #{current_floor - 1}"
-      end
+      return drop_second(secret_highest_floor, current_floor - floor_jump - 1)
     end
 
-    current_floor += 2
+    current_floor += floor_jump
+    floor_jump -= 1
     drops += 1
   end
 
