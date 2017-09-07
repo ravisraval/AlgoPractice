@@ -1,4 +1,5 @@
 # Definition for a binary tree node.
+#not exactly what LC wanted
 class TreeNode
     attr_accessor :val, :left, :right
     def initialize(val)
