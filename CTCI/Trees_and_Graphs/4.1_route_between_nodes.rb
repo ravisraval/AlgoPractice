@@ -1,18 +1,16 @@
-#given a directed graph, design an algorithm
 # to find out whether there is a router btwn two nodes
 require_relative 'poly_tree_node'
-
+#given a directed graph, design an algorithm
+# require 'byebug'
 def route_between_nodes?(source_node, destination_node)
   return true if source_node == destination_node
-
 
   node_queue = [source_node]
 
   until node_queue.empty?
-
+    # debugger
     current_node = node_queue.shift
 
-    next if current_node.visited
     current_node.visited = true
 
     current_node.children.each do |child|
@@ -26,19 +24,44 @@ def route_between_nodes?(source_node, destination_node)
   false
 end
 
+def testf
 
-a = Node.new(1)
-b = Node.new(2)
-c = Node.new(3)
-d = Node.new(4)
-e = Node.new(5)
-f = Node.new(6)
-g = Node.new(7)
+  a = Node.new(1)
+  b = Node.new(1)
+  c = Node.new(1)
+  d = Node.new(1)
+  e = Node.new(1)
+  f = Node.new(1)
+  g = Node.new(1)
 
+  a.children.push(b, c)
+  b.children.push(d, e)
+  c.children.push(g)
+  g.children.push(a)
+  p route_between_nodes?(a, f)
 
-a.children.push(b, c)
-b.children.push(d, e, f)
-c.children.push(g)
-g.children.push(a)
+  a.visited = false
+  b.visited = false
+  c.visited = false
+  d.visited = false
+  e.visited = false
+  f.visited = false
+  g.visited = false
 
-p route_between_nodes?(a, g)
+  a.children = []
+  b.children = []
+  c.children = []
+  d.children = []
+  e.children = []
+  f.children = []
+  g.children = []
+
+  a.children.push(b, c)
+  b.children.push(d, e)
+  c.children.push(g)
+  g.children.push(a)
+
+  p route_between_nodes?(a, g)
+end
+
+testf

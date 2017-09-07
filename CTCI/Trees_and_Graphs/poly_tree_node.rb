@@ -1,7 +1,6 @@
 class Node
 
-  attr_accessor :visited, :value
-  attr_reader :children
+  attr_accessor :visited, :value, :children
 
   def initialize(value)
     @value = value
