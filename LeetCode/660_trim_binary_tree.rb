@@ -7,9 +7,8 @@ class TreeNode
     end
 end
 
-
 def trim_bst(root, l, r)
-    good_nodes = []
+    filtered_values = []
 
     #dfs to get nodes within bounds
     queue = [root]
@@ -17,22 +16,28 @@ def trim_bst(root, l, r)
         current_node = queue.shift
 
         if current_node.val >= l && current_node.val <= r
-            good_nodes.push(current_node)
+            filtered_values.push(current_node.val)
         end
 
         queue.push(current_node.left) if current_node.left
         queue.push(current_node.right) if current_node.right
 
     end
-    p good_nodes
-    #make tree with good nodes with minimal height
-    # new_root = good_nodes.shift
-    #
-    # good_nodes.each do |node|
-    #
-    #     if node.val < new_root.val
 
+    filtered_values.sort!
+    # make tree with good nodes
+    return make_minimal_tree(filtered_values)
+end
 
+def make_minimal_tree(arr)
+  return if arr.empty?
+
+  node = TreeNode.new(arr[arr.length / 2])
+
+  node.left = make_minimal_tree(arr[0...arr.length / 2])
+  node.right = make_minimal_tree(arr[arr.length / 2 + 1..-1])
+
+  node
 end
 
 
@@ -46,4 +51,4 @@ b.right = d
 a.right = c
 c.left = e
 
-trim_bst(a, 4, 6)
+p trim_bst(a, 4, 6)
