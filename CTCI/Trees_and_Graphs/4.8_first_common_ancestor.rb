@@ -61,3 +61,5 @@ c.left = f
 c.right = g
 f.parent = c
 g.parent = c
+
+p common_ancestor_parent(f, d)
