@@ -39,6 +39,39 @@ def common_ancestor_parent(node1, node2)
 
 end
 
+
+def common_ancestor_no_parent(root_node, node1, node2)
+
+  if root_node.left && has_both_nodes(root_node.left, node1, node2)
+    return common_ancestor_no_parent(root_node.left, node1, node2)
+  end
+
+  if root_node.right && has_both_nodes(root_node.right, node1, node2)
+    return common_ancestor_no_parent(root_node.right, node1, node2)
+  end
+
+  return root_node
+end
+
+def has_both_nodes(root_node, node1, node2)
+  node_queue = [root_node]
+  nodes_found = 0
+
+  until node_queue.empty?
+    current_node = node_queue.shift
+
+    if current_node == node1 || current_node == node2
+      nodes_found += 1
+    end
+    return true if nodes_found == 2
+
+    node_queue.push(current_node.left) if current_node.left
+    node_queue.push(current_node.right) if current_node.right
+  end
+
+  false
+end
+
 a = BinaryTreeNode.new(5)
 b = BinaryTreeNode.new(3)
 c = BinaryTreeNode.new(7)
@@ -62,4 +95,4 @@ c.right = g
 f.parent = c
 g.parent = c
 
-p common_ancestor_parent(f, d)
+p common_ancestor_no_parent(a, f, g)
