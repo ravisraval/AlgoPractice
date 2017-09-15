@@ -1,5 +1,7 @@
 class Stack
 
+  attr_reader :length
+
   def initialize
     @store = []
     @length = 0
@@ -26,6 +28,10 @@ class Stack
 
   def isEmpty
     @length == 0
+  end
+
+  def display
+    @store
   end
 
 end
