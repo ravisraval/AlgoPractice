@@ -6,6 +6,7 @@
 
 require_relative 'basic_stack'
 
+#not the best, see note
 def sort_stack(stack)
 
   secondary_stack = Stack.new
@@ -21,6 +22,8 @@ def sort_stack(stack)
         secondary_stack.push(popped)
       else
         sorted = false
+        # BETTER SOLUTION IS TO KEEP POPPING FROM THE SECONDARY STACK
+        # that way you do it all in one pass
         stack.push(secondary_stack.pop)
         secondary_stack.push(popped)
         secondary_stack.push(stack.pop)

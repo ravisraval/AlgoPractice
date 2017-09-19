@@ -7,6 +7,8 @@
 # such as enqueue, dequeueAny, dequeueDog, and dequeueCat. You may use
 # the built-in LinkedList data structure. <--no such thing
 
+
+#incomplete - felt ok about it
 class Animal
 
   attr_accessor :next, :name, :next_dog, :next_cat
@@ -83,7 +85,7 @@ class Shelter
   end
 
   def dequeueDog
-    
+
   end
 
 
