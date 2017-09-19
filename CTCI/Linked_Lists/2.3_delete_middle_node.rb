@@ -9,7 +9,8 @@
 
 require_relative 'linked_list_node'
 #just change c to be d, and d to be e, an e to be f
-def delete_middle_node(node_to_delete)
+#actually this solution is dumb. no need to move them all over. instead, see blow
+def dumb_delete_middle_node(node_to_delete)
 
   current_node = node_to_delete
 
@@ -27,6 +28,16 @@ def delete_middle_node(node_to_delete)
 
 end
 
+def better_delete(node_to_delete)
+  node_to_delete.value = node_to_delete.next.value
+
+  if node_to_delete.next.next
+    node_to_delete.next = node_to_delete.next.next
+  else
+    node_to_delete.next = nil
+  end
+end
+
 first = Node.new(1)
 second = Node.new(2)
 third = Node.new(3)
@@ -37,8 +48,9 @@ sixth = Node.new(6)
 first.next = second
 second.next = third
 third.next = fourth
-# fourth.next = fifth
+fourth.next = fifth
 # fifth.next = sixth
 
-delete_middle_node(third)
+# dumb_delete_middle_node(third)
+better_delete(third)
 p first
