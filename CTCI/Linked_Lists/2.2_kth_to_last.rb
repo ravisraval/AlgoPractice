@@ -1,11 +1,11 @@
-#singly linked list, given head, find kth to last
+# singly linked list, given head, find kth to last
 
 require_relative 'linked_list_node'
 def kth_to_last(head, k)
   current_node = head
   runner = head
 
-  (k-1).times do |time|
+  (k - 1).times do |_time|
     return 'Not enough nodes' unless runner.next
     runner = runner.next
   end
@@ -16,7 +16,6 @@ def kth_to_last(head, k)
   end
 
   current_node.value
-
 end
 
 first = Node.new(1)
