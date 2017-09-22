@@ -30,17 +30,16 @@ g = BinaryTreeNode.new(8)
 
 a.left = b
 a.right = c
-b.parent = a
-c.parent = a
 
 b.left = d
 b.right = e
-d.parent = b
-e.parent = b
 
 c.left = f
 c.right = g
-f.parent = c
-g.parent = c
 
+puts "IN ORDER"
 in_order_traversal(a)
+puts "PRE ORDER"
+pre_order_traversal(a)
+puts "POST ORDER"
+post_order_traversal(a)
