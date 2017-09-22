@@ -47,11 +47,12 @@ def build_order(projects, dependencies)
   project_order = []
 
   #kinda do bfs, except if current_project's parents isn't empty,
-  #switch its position with the next project
+  #switch its position with the next project, pushing it ahead in the queue
 
   skips_made = 0
   until project_queue.empty?
     #if project has dependencies, skip it
+    #if we've skipped everything, then we're in a loop. can't work
     unless project_queue.first.parents.empty?
       project_queue.rotate!
       skips_made += 1
