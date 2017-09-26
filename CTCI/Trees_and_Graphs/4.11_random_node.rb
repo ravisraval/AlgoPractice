@@ -21,6 +21,12 @@
 #after that many moves of bfs or whatever. That way, it's random, and
 #doesn'take up any more space.
 
+
+#how the book's solution differs: keep track of how many nodes are to
+#the left and right of each node. randomly pick a direction, weighted
+#by how many nodes there are on whichever side. staying in place would
+#be one possibilty as well.
+
 require_relative 'binary_node_with_parent'
 
 class BinaryTree
