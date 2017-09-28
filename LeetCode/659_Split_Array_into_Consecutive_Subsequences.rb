@@ -24,39 +24,44 @@
 def can_split?(given_array)
   #this doesn't work as is..have to look into duplicates
   subs_made = 0
-  sub_hash = Hash.new([])
+  # sub_hash = Hash.new([])
+  sub_hash = {0 => []}
+
   sub_hash[0].push(given_array.first)
 
+  #make hash values ascending arrays
   given_array[1..-1].each do |num|
-    if num == sub_hash[subs_made].last + 1
-      sub_one.push(num)
-    else
-      sub_two.push(num)
+    need_new_sub = true
+
+    sub_hash.keys.each do |key|
+      if num == sub_hash[key].last + 1
+        sub_hash[key].push(num)
+        need_new_sub = false
+        break
+      end
     end
+
+    if need_new_sub
+      subs_made += 1
+      sub_hash[subs_made] = []
+      sub_hash[subs_made].push(num)
+    end
+
   end
 
-  return false if sub_one.length < 3
+  p sub_hash
 
+  return false if sub_hash.any? { |k, v| v.length < 3 }
+  return false if sub_hash.keys.length < 2
 
-
-  # false
+  true
 end
 
 #thoughts
 #make one array as long as possibru
 #see if what is left over is consecutive, or needs part of array 1
-def split_brute?(given_array)
-
-  sub_1 = []
-  sub_2 = []
-
-
-
-
-
-end
 
 p can_split?([1,2,3,3,4,5])
-p can_split?([1,2,3,3,4,5])
-p can_split?([1,2,3,3,4,5])
-p can_split?([1,2,3,3,4,5])
+p can_split?([1,2,3,4,5,6])
+# p can_split?([1,2,3,3,4,5])
+# p can_split?([1,2,3,3,4,5])
