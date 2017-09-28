@@ -24,11 +24,11 @@
 def can_split?(given_array)
   #this doesn't work as is..have to look into duplicates
   subs_made = 0
-  sub_one = [given_array[0]]
-  sub_two = []
+  sub_hash = Hash.new([])
+  sub_hash[0].push(given_array.first)
 
   given_array[1..-1].each do |num|
-    if num == sub_one.last + 1
+    if num == sub_hash[subs_made].last + 1
       sub_one.push(num)
     else
       sub_two.push(num)
@@ -37,10 +37,12 @@ def can_split?(given_array)
 
   return false if sub_one.length < 3
 
+
+
   # false
 end
 
-#thougts
+#thoughts
 #make one array as long as possibru
 #see if what is left over is consecutive, or needs part of array 1
 def split_brute?(given_array)
