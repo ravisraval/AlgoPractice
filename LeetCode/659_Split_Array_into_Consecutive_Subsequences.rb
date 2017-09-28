@@ -24,26 +24,36 @@
 def can_split?(given_array)
   #this doesn't work as is..have to look into duplicates
   subs_made = 0
-  second_sub_array = []
+  sub_one = [given_array[0]]
+  sub_two = []
 
-  idx = 0
-  while idx < given_array.length
-    current = given_array[idx]
-    plus_one = given_array[idx + 1]
-    plus_two = given_array[idx + 2]
-
-    if current + 1 == plus_one && plus_one + 1 == plus_two
-      subs_made += 1
-      idx += 3
+  given_array[1..-1].each do |num|
+    if num == sub_one.last + 1
+      sub_one.push(num)
     else
-      idx += 1
+      sub_two.push(num)
     end
-
-    return true if subs_made == 2
   end
 
-  false
+  return false if sub_one.length < 3
+
+  # false
 end
+
+#thougts
+#make one array as long as possibru
+#see if what is left over is consecutive, or needs part of array 1
+def split_brute?(given_array)
+
+  sub_1 = []
+  sub_2 = []
+
+
+
+
+
+end
+
 p can_split?([1,2,3,3,4,5])
 p can_split?([1,2,3,3,4,5])
 p can_split?([1,2,3,3,4,5])
