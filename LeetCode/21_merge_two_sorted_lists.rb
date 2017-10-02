@@ -7,7 +7,7 @@ class ListNode
 end
 
 def merge_two_lists(l1, l2)
-      dummy_head = ListNode.new(0)
+  dummy_head = ListNode.new(0)
   latest_node = dummy_head
   l1_latest = l1
   l2_latest = l2
