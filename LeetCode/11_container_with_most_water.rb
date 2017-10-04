@@ -61,44 +61,30 @@ biggest_area
 end
 
 
-# def optimal(heights)
-#   saved = {}
-#   biggest_num_seen = 0
-#   i = 1
-#   height_of_current_greatest_area = 0
-#   greatest_area_seen = 0
-#
-#   heights.each do |height|
-#     possible_new_area = 0
-#     possible_new_height = 0
-#
-#     saved[height] = i unless saved.has_key?(height)
-#
-#     if height > biggest_num_seen
-#       biggest_num_seen = height
-#     end
-#
-#     #make our old greatest area bigger by one x
-#     if height >= height_of_current_greatest_area
-#       greatest_area_seen += height_of_current_greatest_area
-#     end
-#
-#     #find max height that could be made with current line and some prev
-#     height.downto(1).each do |possible_height|
-#       if saved.has_key?(possible_height)
-#         possible_new_area = possible_height * (i - saved[possible_height])
-#         possible_new_height = possible_height
-#         break
-#       end
-#     end
-#
-#     if possible_new_area > greatest_area_seen
-#       greatest_area_seen = possible_new_area
-#       height_of_current_greatest_area = possible_new_height
-#     end
-#
-#     i += 1
-#   end
-#
-#   greatest_area_seen
-# end
+# optimal solution: use two pointers, starting from each end
+# walk whichever pointer is smaller towards the middle
+
+def optimal(heights)
+  biggest_area_seen = 0
+
+  pointer_1_idx = 0
+  pointer_2_idx = heights.length - 1
+
+
+  until pointer_1_idx == pointer_2_idx
+    current_area =
+    [ heights[pointer_1_idx], heights[pointer_2_idx]].min *
+    (pointer_2_idx - pointer_1_idx)
+
+    biggest_area_seen = current_area if current_area > biggest_area_seen
+
+    if heights[pointer_1_idx] < heights[pointer_2_idx]
+      pointer_1_idx += 1
+    else
+      pointer_2_idx -= 1
+    end
+  end
+
+  biggest_area_seen
+
+end
