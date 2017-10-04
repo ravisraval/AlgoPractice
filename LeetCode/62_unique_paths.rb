@@ -24,9 +24,11 @@
 
     matrix[1..-1].each_with_index do |row, row_idx|
       row[1..-1].each_with_index do |cell, col_idx|
-        matrix[row_idx][col_idx] =
-        matrix[row_idx - 1][col_idx] + matrix[row_idx][col_idx - 1]
+        matrix[row_idx + 1][col_idx + 1] =
+        matrix[row_idx][col_idx + 1] + matrix[row_idx + 1][col_idx]
       end
     end
-    matrix.flatten.max
+    matrix.last.last
   end
+
+  p unique_paths(3,7)
