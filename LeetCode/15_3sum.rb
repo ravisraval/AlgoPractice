@@ -30,6 +30,7 @@ end
 
 
 #treat this like 2 sum, where the target is whatever thing you're on
+# solution incomplete : has issue with 0s?
 require 'set'
 def two_sum_helper(nums_slice, target)
   seen_nums = Set.new
@@ -41,6 +42,7 @@ def two_sum_helper(nums_slice, target)
       seen_nums << num
     end
   end
+  nil
 end
 
 
@@ -48,11 +50,12 @@ def better(nums)
   res = []
   nums.each_with_index do |num, idx|
     nums_slice = nums[0...idx] + nums[idx + 1..-1]
+
     current_num_works = two_sum_helper(nums_slice, num * -1)
 
     if current_num_works
-      current_num_works.push(num)
-      res.push(current_num_works.sort) unless res.include?(current_num_works)
+      current_num_works = current_num_works.push(num).sort
+      res.push(current_num_works) unless res.include?(current_num_works)
     end
   end
   res
