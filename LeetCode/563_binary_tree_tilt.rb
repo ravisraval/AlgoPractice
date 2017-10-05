@@ -31,6 +31,7 @@ def find_tilt(root)
   return 0 if root.nil? || root.val.nil?
   left_sum, left_tilts = sub_sum(root.left)
   right_sum, right_tilts = sub_sum(root.right)
+  
   left_tilts.concat(right_tilts.push((left_sum - right_sum).abs)).reduce(:+)
 end
 
@@ -39,6 +40,7 @@ def sub_sum(node)
   return [0, []] if node.nil? || node.val.nil?
   left_sum, left_tilts = sub_sum(node.left)
   right_sum, right_tilts = sub_sum(node.right)
+
   [left_sum + right_sum + node.val,
    left_tilts.concat(right_tilts.push((left_sum - right_sum).abs))
  ]
