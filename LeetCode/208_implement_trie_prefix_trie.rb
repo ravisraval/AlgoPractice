@@ -3,9 +3,8 @@
 # You may assume that all inputs are consist of lowercase letters a-z.
 
 class TrieNode
-  attr_accessor :val, :children
-  def initialize(val)
-    @val = val
+  attr_accessor :children
+  def initialize
     @children = {}
   end
 end
@@ -13,7 +12,7 @@ end
 class Trie
 
     def initialize()
-      @root = TrieNode.new(0)
+      @root = TrieNode.new
     end
 
 =begin
@@ -26,7 +25,7 @@ class Trie
 
       word.chars.each do |ch|
         if !current_node.children.has_key?(ch)
-          current_node.children[ch] = TrieNode.new(ch)
+          current_node.children[ch] = TrieNode.new
         end
 
         current_node = current_node.children[ch]
