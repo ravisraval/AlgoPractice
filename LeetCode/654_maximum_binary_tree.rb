@@ -18,3 +18,26 @@
 #         1
 # Note:
 # The size of the given array will be in the range [1,1000].
+class TreeNode
+    attr_accessor :val, :left, :right
+    def initialize(val)
+        @val = val
+        @left, @right = nil, nil
+    end
+end
+
+def construct_maximum_binary_tree(nums)
+  root = TreeNode.new(nums.max)
+  root_idx = nums.index(root.val)
+
+  root.left = construct_maximum_binary_tree(nums[0...root_idx]) unless root_idx == 0
+  root.right = construct_maximum_binary_tree(nums[root_idx + 1..-1]) unless root_idx + 1 == nums.length
+
+  root
+end
+
+
+
+
+
+end
