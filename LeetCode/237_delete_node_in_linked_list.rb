@@ -13,7 +13,7 @@ end
 
 # @param {ListNode} node
 # @return {Void} Do not return anything, modify node in-place instead.
-def delete_node(node)
+def delete_node_dumb(node)
   current_node = node
 
   while current_node.next.next
@@ -25,15 +25,12 @@ def delete_node(node)
 end
 
 
-a = ListNode.new(1)
-b = ListNode.new(2)
-c = ListNode.new(3)
-d = ListNode.new(4)
-e = ListNode.new(5)
+#wait, that's slow! just move pointer over, delete node.. like so
 
-a.next = b
-b.next = c
-c.next = d
-d.next = e
-delete_node(c)
-p a
+
+def delete_node(node)
+
+  node.val = node.next.val
+  node.next = node.next.next
+  nil
+end
