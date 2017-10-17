@@ -44,3 +44,17 @@ AND SUBSTRING(CITY, -1, 1) IN ("a", "e", "i", "o", "u")
 SELECT DISTINCT CITY FROM STATION
 WHERE SUBSTRING(CITY, 1, 1) NOT IN ("a", "e", "i", "o", "u")
 -- 9
+
+SELECT DISTINCT CITY FROM STATION
+WHERE SUBSTRING(CITY, -1, 1) NOT IN ("a", "e", "i", "o", "u")
+-- 10
+
+SELECT DISTINCT CITY FROM STATION
+WHERE SUBSTRING(CITY, -1, 1) NOT IN ("a", "e", "i", "o", "u")
+OR SUBSTRING(CITY, 1, 1) NOT IN ("a", "e", "i", "o", "u")
+-- 11
+
+SELECT DISTINCT CITY FROM STATION
+WHERE SUBSTRING(CITY, -1, 1) NOT IN ("a", "e", "i", "o", "u")
+AND SUBSTRING(CITY, 1, 1) NOT IN ("a", "e", "i", "o", "u")
+-- 12
