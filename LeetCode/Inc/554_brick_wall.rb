@@ -59,6 +59,6 @@ def least_bricks(wall)
       lowest_count = current_count
     end
   end
-  
+
   lowest_count
 end
