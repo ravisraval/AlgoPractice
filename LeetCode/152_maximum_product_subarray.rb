@@ -28,9 +28,6 @@ def max_product2(nums)
     rsubproduct  = 1 if rsubproduct == 0
     rsubproduct *= nums[-1 + -idx]
     product = rsubproduct if product < rsubproduct
-    puts lsubproduct
-    puts rsubproduct
-    puts product
   end
 
   product
@@ -42,8 +39,7 @@ lowest_seen = nums[0]
 highest_curr = nums[0]
 lowest_curr = nums[0]
 
-  nums.each_with_index do |num, idx|
-      next if idx == 0
+  nums[1..-1].each do |num|
       temp = highest_curr
       highest_curr = [highest_curr * num, num, lowest_curr * num].max
       lowest_curr = [temp * num, num, lowest_curr * num].min
@@ -55,3 +51,24 @@ lowest_curr = nums[0]
 end
 
 p max_product2([0.2,3,-2,4,-10,0.5,-2,-3])
+
+#for funsees: maximum sum subarray
+
+def maximum_sum_subarray(nums)
+  highest_seen = nums[0]
+  lowest_seen = nums[0]
+  highest_curr = nums[0]
+  lowest_curr = nums[0]
+
+  nums[1..-1].each do |num|
+    temp = highest_curr
+    highest_curr = [num, highest_curr + num, lowest_curr + num].max
+    lowest_curr = [num, temp + num, lowest_curr + num].min
+
+    highest_seen = [highest_seen, highest_curr].max
+    lowest_seen = [lowest_seen, lowest_curr].max
+  end
+  highest_seen
+end
+
+p maximum_sum_subarray([1,2,3,4,5,-80,5,4,15])
