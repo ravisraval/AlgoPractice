@@ -19,3 +19,18 @@ def iter_rob(nums)
   now
 end
 p iter_rob([1,5,9,1,4])
+# t(1)
+# prev = 0
+# now = 1
+#
+# t(2) which is bigger, prev + 5, or now
+# prev = old_now = 1
+# now = 5
+#
+# t(3) which is bigger, prev + 9, or now
+# prev = 5
+# now = 10
+#
+# t(4) which is bigger, prev + 1, or now
+# prev = 10
+# now = 10
