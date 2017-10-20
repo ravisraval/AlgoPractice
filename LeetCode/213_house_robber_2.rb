@@ -5,11 +5,9 @@
 def iter_rob(nums)
   return 0 unless nums.is_a? Array
   prev, now = 0, 0
-  idx = 0
-  while idx < nums.length
-    prev, now = now, [prev + nums[idx], now].max
-    idx += 1
-  end
+  nums.each do |num|
+        prev, now = now, [now, prev + num].max
+    end
   now
 end
 
