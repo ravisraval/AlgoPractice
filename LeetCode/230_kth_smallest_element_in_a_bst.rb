@@ -43,3 +43,20 @@ def traverse(node, k, list)
     end
     list
 end
+
+# def traverse(node, k, list)
+#     if node.left
+#         list, k = traverse(node.left, k, list)
+#     end
+#
+#     list.push(node.val)
+#     k -= 1
+#     if k == 0
+#       return node.val
+#     end
+#
+#     if node.right
+#         list, k = traverse(node.right, k, list)
+#     end
+#     [list, k]
+# end
