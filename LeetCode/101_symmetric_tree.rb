@@ -82,8 +82,8 @@ def is_symmetric_recur(root)
 end
 
 def isMirror(n1, n2)
-  return true if n1 == null && n2 == null
-  return false if n1 == null || n2 == null
+  return true if n1 == nil && n2 == nil
+  return false if n1 == nil || n2 == nil
   return n1.val == n2.val &&
     isMirror(n1.left, n2.right) &&
     isMirror(n1.right, n2.left)
