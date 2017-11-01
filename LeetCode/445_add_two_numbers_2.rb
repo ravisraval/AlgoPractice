@@ -10,7 +10,7 @@ end
 # @param {ListNode} l1
 # @param {ListNode} l2
 # @return {ListNode}
-def add_two_numbers(l1, l2)
+def add_two_numbers(l1, l2) #this is silly = just convert to string, then to int, and add, then back to string, then to LL
   digits1 = []
   digits2 = []
   curr1 = l1
@@ -26,6 +26,8 @@ def add_two_numbers(l1, l2)
       curr2 = curr2.next
     end
   end
+
+
 
   curr_node = nil
   idx = 0
