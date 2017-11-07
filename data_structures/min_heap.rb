@@ -10,6 +10,10 @@ class MinHeap
 
   def insert(num)
     @store.push(num)
+    heapifyup(num)
+  end
+
+  def heapifyup(num)
     curr_idx = @store.length - 1
 
     return if curr_idx == 0
@@ -38,9 +42,13 @@ class MinHeap
 
   def get_and_remove_min
     min = @store[0]
-
     @store[0] = @store.pop
 
+    heapifydown
+    min
+  end
+
+  def heapifydown
     curr_idx = 0
 
     left_child_idx = 1
@@ -49,11 +57,8 @@ class MinHeap
     left_child = @store[left_child_idx]
     right_child = @store[right_child_idx]
 
-    return min if left_child.nil? && right_child.nil?
-
     while (left_child && @store[curr_idx] > left_child) ||
           (right_child && @store[curr_idx] > right_child)
-
 
       if right_child.nil? || left_child < right_child
         @store[curr_idx], @store[left_child_idx] =
@@ -72,8 +77,6 @@ class MinHeap
       right_child = @store[right_child_idx]
 
     end
-
-    min
   end
 
 end
