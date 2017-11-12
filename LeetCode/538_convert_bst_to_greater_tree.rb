@@ -23,5 +23,19 @@
 # @param {TreeNode} root
 # @return {TreeNode}
 def convert_bst(root)
+  change_tree(root, 0)
+  root
+end
 
+
+def change_tree(node, sum)
+  sum = change_tree(node.right, sum) if node.right
+
+  old_sum = sum
+  sum += node.val
+  node.val += old_sum
+
+  sum = change_tree(node.left, sum) if node.left
+
+  sum
 end
