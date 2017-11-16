@@ -11,5 +11,20 @@
 # @param {String} s
 # @return {Integer}
 def first_uniq_char(s)
+  letters = {}
+  deleted = []
+  s.split("").each_with_index do |ch, idx|
+    next if deleted.include?(ch)
+    if letters[ch]
+      letters.delete(ch)
+      deleted.push(ch)
+    else
+      letters[ch] = idx
+    end
+  end
+  return -1 if letters.empty?
+  letters.first.last
 
 end
+
+p first_uniq_char("ww")
