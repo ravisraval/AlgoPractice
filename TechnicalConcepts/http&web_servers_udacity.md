@@ -141,6 +141,12 @@ the answer
   - eg. PNG image file will come with Content-type `image/png`
 - `Content-Length` is often sent - tell how long, in bytes, the response body will be
   - the client can refuse the connection to send another request
+  - browsers use this so they can fetch many pieces of data (eg, lots of images)
+  without having to reconnect to the server
+
+#### Response Body
+- the headers end with a blank line. everything after is the response body
+
 
 0
 
