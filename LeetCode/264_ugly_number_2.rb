@@ -30,3 +30,24 @@ def is_ugly?(num)
   true
 
 end
+
+def nth_ugly_number_online(n)
+  nums, i2, i3, i5 = Array.new(n, 1), 0, 0, 0
+
+  1.upto(n - 1) do |i|
+    n2, n3, n5 = nums[i2] * 2, nums[i3] * 3, nums[i5] * 5
+
+    min = n2  < n3 ? n2  : n3
+    min = min < n5 ? min : n5
+    nums[i] = min
+
+    i2 += 1 if min == n2
+    i3 += 1 if min == n3
+    i5 += 1 if min == n5
+
+  end
+
+  nums[n - 1]
+end
+
+nth_ugly_number_online(25)
