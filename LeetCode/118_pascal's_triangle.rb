@@ -31,5 +31,5 @@ def generate(num_rows)
     rows.push(next_row)
   end
 
-  rows
+  rows.map { |row| p row}
 end
