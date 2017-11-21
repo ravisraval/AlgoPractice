@@ -7,7 +7,6 @@
 # @return {Boolean}
 def is_ugly(num)
     return false if num <= 0
-    return true if num == 1 || num == 2 || num == 3 || num == 4
     while num % 5 == 0
         num /= 5
     end
