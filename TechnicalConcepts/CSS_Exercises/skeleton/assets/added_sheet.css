@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:#898a8e
+}
+
+h1 {
+    font-size: 38px;
+}
+h2 {
+    font-size: 32px;
+}
+
+.ingredients-list {
+    list-style: upper- inside;
+}
+
+ol {
+    list-style: upper-latin outside;
+    font-size: 30px;
+}
+
+header > img {
+    width: 100px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: darkseagreen;
+}
+
+.user_review {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.user_review h4 {
+  font-size:50px;
+}
