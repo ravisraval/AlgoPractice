@@ -43,4 +43,38 @@ ol {
   font-weight: bold;
 }
 
+li:nth-child(2n) {
+  background-color: lightgrey;
+}
 
+h2 + .user_review {
+  border-top: 1px solid black;
+}
+
+.user_review:last-of-type {
+  border-bottom: 1px solid red;
+}
+
+input[type="radio"]:checked {
+  background-color: yellow;
+}
+input[type="radio"], select input[type="submit"] {
+  -webkit-appearance: none;
+  width:27px;
+  height: 27px;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="radio"] {
+  background-image: url("stars.png");
+}
+
+input:last-child {
+  background-color: green;
+}
+
+input:last-child:hover {
+  -webkit-filter:brightness(90%);
+  transform: translateY(1px);
+}
