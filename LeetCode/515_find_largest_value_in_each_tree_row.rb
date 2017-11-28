@@ -23,7 +23,7 @@
 # @param {TreeNode} root
 # @return {Integer[]}
 def largest_values(root)
-    return nil if root.nil?
+    return [] if root.nil?
     levels = []
 
     node_queue = [[root, 0]]
