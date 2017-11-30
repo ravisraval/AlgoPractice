@@ -36,5 +36,4 @@ def merge_trees(t1, t2)
     res.left = merge_trees((t1 ? t1.left : nil), (t2 ? t2.left : nil))
     res.right = merge_trees((t1 ? t1.right : nil), (t2 ? t2.right : nil))
     res
-
 end
