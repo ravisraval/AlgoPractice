@@ -152,6 +152,40 @@ def check_for_x(row_idx, col_idx, matrix)
 
 
 
+end
+
+
+
+
+
+
+
+
+
+
+
+def find_x(matrix)
+  biggest_seen = 0
+  visited = []
+  matrix.each_with_index do |row, rowidx|
+    row.each_with_index do |cell, colidx|
+      next if cell == 0 || visited.include?([rowidx, colidx])
+      current_length = determine_length(matrix, rowidx, colidx)
+      biggest_seen = current_length if current_length > biggest_seen
+    end
+  end
+  biggest_seen
+end
+
+def determine_length(matrix, rowidx, colidx)
+  #first, find how far down-right this goes
+  right_length = 1
+
+  while matrix[rowidx + 1] && matrix[rowidx + 1][colidx + 1] == 1
+    right_length += 1
+  end
+
+
 
 
 
