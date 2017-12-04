@@ -52,3 +52,7 @@ the browser rendering links with blue text and underline if the developer doesn'
 
 
 * The **cascaded value** is the name of the winning/actually used value
+
+* When using third party stylesheets, **always put your own (author) stylesheet last**, due to order precedence.
+
+* The universal selector \* has a specificity of (0,0,0,0), meaning that everything else has specificity over it.
