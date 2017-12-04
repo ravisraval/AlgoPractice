@@ -42,9 +42,13 @@ the browser rendering links with blue text and underline if the developer doesn'
   3. Author declarations
   4. User declarations
   5. Default browser declarations
-
 2. Specificity, **only applies if rules have same importance**:
   1. Inline styles
   2. IDs
   3. Classes, pseudo-classes, attributes
   4. Elements, pseudu-elements
+3.  Source order! **only applies if rules have same importance AND specificity**
+  * **The last declaration in the code will override all other declarations and will be applied.
+
+
+* The **cascaded value** is the name of the winning/actually used value
