@@ -71,3 +71,38 @@ end
 #   >> next_server_number([])
 #   1
 # 5, 3, 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[5, 4, 2, 3]
+
+5(4) + 5(2) + 5(3) + 4(2) + 4(3) + 2(3)
+5(4 + 2 + 3) + 4(2 + 3) + 2(3)
+
+def mult_arr(arr)
+  total = 0
+  remaining_sum = arr.reduce(:+)
+
+  arr[0..-1].each do |num|
+    remaining_sum -= num
+    total += num * remaining_sum
+  end
+
+  total
+
+end

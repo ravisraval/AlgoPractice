@@ -16,7 +16,7 @@
 # @param {ListNode} head
 # @return {ListNode}
 # two passes
-def delete_duplicates_two_passes(head)
+def delete_duplicates(head)
   return nil if head.nil?
 
   dummy_start = ListNode.new(0)
@@ -44,10 +44,4 @@ def delete_duplicates_two_passes(head)
   end
 
   dummy_start.next
-end
-
-def delete_duplicates(head)
-  return nil if head.nil?
-
-  
 end
