@@ -15,6 +15,7 @@
 # Length of the array will not exceed 10^4.
 # @param {Integer[]} nums
 # @return {Integer}
+#fails some tests as it's too slow
 def total_hamming_distance(nums)
     total = 0
     nums.each_index do |idx|
