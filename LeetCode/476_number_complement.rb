@@ -22,3 +22,9 @@ def find_complement(num)
         end
     end.join("").to_i(2)
 end
+
+#alt
+def find_complement(num)
+    ones = ('1' * num.to_s(2).length).to_i(2)
+    ones ^ num
+end
