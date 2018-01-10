@@ -63,3 +63,39 @@ end
 
 
 p two_sum_helper([5,-5,2], -3)
+
+
+# @param {Integer[]} nums
+# @return {Integer[][]}
+# this time, with 100% more sorting! and no extra space! wooo
+def three_sum(nums)
+    nums.each do |num|
+        if nums.count(num) > 3
+            nums.delete(num)
+            nums.push(num, num, num)
+        end
+    end
+    res = {}
+    nums.sort!
+
+    nums.each_with_index do |num, idx|
+        mididx = idx + 1
+        lastidx = nums.length - 1
+
+        while mididx < lastidx
+
+            current_sum = num + nums[mididx] + nums[lastidx]
+            if current_sum == 0
+                res[[num, nums[mididx], nums[lastidx]]] = true
+                mididx += 1
+                lastidx -= 1
+            elsif current_sum > 0
+                lastidx -= 1
+            else
+                mididx += 1
+            end
+        end
+    end
+
+    res.keys
+end

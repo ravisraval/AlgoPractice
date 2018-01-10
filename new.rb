@@ -57,3 +57,12 @@
 #   total
 #
 # end
+
+
+def perms(arr, t)
+  arr.sort!
+  
+
+
+
+end
