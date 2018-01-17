@@ -25,3 +25,20 @@ def length_of_lis(nums)
 
   current_longest
 end
+
+def bs_length_of_lis(nums)
+ array = []
+
+  nums.each do |num|
+    idx = (0...array.size).bsearch { |i| array[i] >= num } || array.size
+    puts "num: #{num}"
+    puts "idx: #{idx}"
+    array[idx] = num
+    p array
+    puts
+  end
+
+  array.size
+end
+
+p bs_length_of_lis([19,20,9,2,5,3,7,101,18])
