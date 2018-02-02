@@ -18,19 +18,3 @@
 # end
 #
 # longest_repeat('aabebcdd')
-
-def overlap?(start1, end1, start2, end2)
-  if (start1 < start2 && start2 < end2 &&
-      end1 < start2 && end1 < end2) ||
-     (start1 > start2 && start1 > end2 &&
-      end1 > start1 && end1 > start2)
-    return false
-  end
-  true
-end
-
-start1 = 1
-end1 = 3
-start2 = 0
-end2 = 0
-p overlap?(start1, end1, start2, end2)

@@ -41,3 +41,16 @@ def sink(grid, i, j)
 
     1
 end
+
+if new_row >= 1 && grid[new_row - 1][new_col] == 'Y'
+      y_stack.push([new_row - 1, new_col])
+    end
+    if new_row < grid.length - 1 && grid[new_row + 1][new_col] == 'Y'
+      y_stack.push([new_row + 1,new_col])
+    end
+    if new_col >= 1 && grid[new_row][new_col - 1] == 'Y'
+      y_stack.push([new_row, new_col - 1])
+    end
+    if new_col < grid[0].length - 1 && grid[new_row][new_col + 1] == 'Y'
+      y_stack.push([new_row, new_col+1])
+    end
