@@ -13,36 +13,8 @@
 # 1¢, 1¢, 2¢
 # 1¢, 3¢
 # 2¢, 2¢
+
 def change_ways(amt, coins)
-  amounts = Array.new(amt + 1, 0)
-  amounts[0] = 1
-  coins.each do |coin_val|
-    (coin_val..amt).each do |curr_amt|
-      amounts[curr_amt] += amounts[curr_amt - coin_val]
-    end
-  end
-  amounts.map.with_index { |el, idx| "#{el} ways to make #{idx}" }
-
-
-
-
-end
-
-
-p change_ways(100, [1,2,3])
-
-
-
-
-
-
-
-
-
-
-
-
-def change_ways2(amt, coins)
   amounts = Array.new(amt + 1, 0)
   amounts[0] = 1
   coins.each do |coin|
@@ -52,31 +24,19 @@ def change_ways2(amt, coins)
   end
   amounts.last
 end
-p change_ways2(100, [1,2,3])
+p change_ways(100, [1,2,3])
 
+def change_ways(amt, coins)
+  amts = Array.new(amt + 1, 0)
+  amts[0] = 1
+  coins.each do |coin|
+    (coin..amt).each do |curr_amt|
+      amts[curr_amt] += amts[curr_amt - coin]
+    end
+  end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  amts.last
+end
 
 # def change_possibilities_bottom_up(amount, denominations)
 #   ways_of_doing_n_cents = [0] * (amount + 1)

@@ -34,13 +34,11 @@
 a = Time.now
 def min_coins(coins, amt)
   coins.sort!
-  return -1 if amt < coins.first
   amts = Array.new(amt + 1, Float::INFINITY)
   amts[0] = 0
 
   coins.each do |coin|
     (coin..amt).each do |curr_amt|
-      # break if coin > curr_amt
       amts[curr_amt] = [amts[curr_amt], amts[curr_amt - coin] + 1].min
     end
   end
@@ -54,7 +52,6 @@ a = Time.now
 
 def min_coins2(coins, amt)
   coins.sort!
-  return -1 if amt < coins.first
   amts = Array.new(amt + 1, Float::INFINITY)
   amts[0] = 0
 
