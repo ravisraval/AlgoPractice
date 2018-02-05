@@ -44,3 +44,15 @@ def can_jump(nums)
 
   index_hash[0]
 end
+
+
+def can_jump(nums)
+    last_valid = nums.length - 1
+
+    (nums.length - 2).downto(1) do |i|
+        if nums[i] + i >= last_valid
+            last_valid = i
+        end
+    end
+    nums[0] >= last_valid
+end
