@@ -5,8 +5,9 @@
 # Note: Given n will be a positive integer.
 
 def climb_stairs(n)
-  res = [1, 2]
-  until res.length >= n
+  return n if n < 3
+  res = [0,1,2]
+  until res.length >= n + 1
     res.push(res[-1] + res[-2])
   end
   res.last

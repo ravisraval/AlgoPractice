@@ -19,6 +19,7 @@ def iter_rob(nums)
   now
 end
 p iter_rob([1,5,9,1,4])
+
 # t(1)
 # prev = 0
 # now = 1
