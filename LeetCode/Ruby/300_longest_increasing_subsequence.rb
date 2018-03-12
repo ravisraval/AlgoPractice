@@ -30,6 +30,7 @@ def bs_length_of_lis(nums)
  array = []
 
   nums.each do |num|
+    # search for first idx where array[i] >= num
     idx = (0...array.size).bsearch { |i| array[i] >= num } || array.size
     puts "num: #{num}"
     puts "idx: #{idx}"
