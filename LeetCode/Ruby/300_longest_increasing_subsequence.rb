@@ -42,4 +42,5 @@ def bs_length_of_lis(nums)
   array.size
 end
 
-p bs_length_of_lis([19,20,9,2,5,3,7,101,18])
+# p bs_length_of_lis([19,20,9,2,5,3,7,101,18])
+p length_of_lis([19,20,9,2,5,3,7,101,18])
