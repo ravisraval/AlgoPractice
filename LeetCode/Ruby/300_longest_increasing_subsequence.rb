@@ -11,19 +11,21 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def length_of_lis(nums)
-  current_longest = 0
-  current_length = 0
+  longest_len = 0
+  longest_arr = []
+  curr_arr = []
+  nums.each do |num|
+    idx = (0...curr_arr.length).bsearch { |i| curr_arr[i] > num } || curr_arr.length
+    curr_arr[idx] = num
 
-  sorted = nums.map.with_index { |el, idx| [el, idx]}.sort
+    if curr_arr.length > longest_len
+      longest_len = curr_arr.length
+      longest_arr = curr_arr.dup
+    end
 
-  sorted.each_with_index do |arr, arridx|
-    num, idx = arr
-
-    current_length = sorted[arridx + 1..-1].select { |arr2| arr2[0] > num && arr2[1] > idx}.length
-    current_longest = current_length if current_longest > current_length
   end
-
-  current_longest
+  
+  longest_arr
 end
 
 def bs_length_of_lis(nums)
@@ -42,5 +44,6 @@ def bs_length_of_lis(nums)
   array.size
 end
 
+p [19,20,9,2,5,3,7,101,18]
 # p bs_length_of_lis([19,20,9,2,5,3,7,101,18])
 p length_of_lis([19,20,9,2,5,3,7,101,18])
