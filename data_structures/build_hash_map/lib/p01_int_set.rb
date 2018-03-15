@@ -40,19 +40,32 @@ class ResizingIntSet
   attr_reader :count
 
   def initialize(length = 20)
+    @store = Array.new(length, false)
+    @count = 0
   end
 
   def insert(num)
+    @count += 1
+    resize! if count == @store.length
+    @store[num % @store.length] = true
   end
 
   def remove(num)
+    @store[num % @store.length] = false
+    @count -= 1
   end
 
   def include?(num)
+    @store[num % @store.length]
   end
 
   private
 
   def resize!
+    new_store = Array.new(@store.length * 2, false)
+    @store.each_with_index do |bool, idx|
+      new_store[idx] = bool
+    end
+    @store = new_store
   end
 end
